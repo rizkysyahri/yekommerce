@@ -6,13 +6,111 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
 model User {
-    id    String  @id @default(cuid())
-    name  String?
-    email String? @unique
-    image String?
+    id      String    @id @default(cuid())
+    name    String?
+    email   String?   @unique
+    image   String?
+    Cart    Cart[]
+    Address Address[]
+}
+
+model Product {
+    id                   String                 @id @default(cuid())
+    name                 String
+    price                Int
+    rating               Int
+    image                String[]
+    slug                 String                 @unique
+    description          String                 @default("")
+    CategoriesOnProducts CategoriesOnProducts[]
+    ProductVariant       ProductVariant[]
+}
+
+model ProductVariant {
+    id        String      @id @default(cuid())
+    product   Product     @relation(fields: [productId], references: [id])
+    sku       String
+    name      String
+    price     Int
+    image     String
+    label     String
+    Cart      Cart[]
+    productId String
+    Inventory Inventory[]
+}
+
+enum InventoryStatus {
+    AVAILABLE // available to be sold
+    ON_ORDER // in the process of an order
+    RESERVED //non-active stock (not on order nor available for sale)
+}
+
+model Inventory {
+    id               String          @id @default(cuid())
+    item             ProductVariant  @relation(fields: [productVariantId], references: [id])
+    productVariantId String
+    quantity         Int
+    status           InventoryStatus
+}
+
+model Category {
+    id                   String                 @id @default(cuid())
+    name                 String
+    CategoriesOnProducts CategoriesOnProducts[]
+}
+
+model CategoriesOnProducts {
+    product    Product  @relation(fields: [productId], references: [id])
+    productId  String
+    category   Category @relation(fields: [categoryId], references: [id])
+    categoryId String
+
+    @@id([productId, categoryId])
+}
+
+model Cart {
+    id               String         @id @default(cuid())
+    item             ProductVariant @relation(fields: [productVariantId], references: [id])
+    user             User           @relation(fields: [userId], references: [id])
+    userId           String
+    quantity         Int
+    deletedAt        DateTime?
+    checkoutAt       DateTime?
+    productVariantId String
+    createdAt        DateTime       @default(now())
+}
+
+model Address {
+    id            String @id @default(cuid())
+    user          User   @relation(fields: [userId], references: [id])
+    userId        String
+    label         String
+    city          City   @relation(fields: [cityId], references: [id])
+    cityId        String
+    details       String
+    googleMapsUrl String
+    phoneNumber   String
+    recipientName String
+}
+
+model Province {
+    id       String @id
+    province String
+    City     City[]
+}
+
+model City {
+    id         String    @id
+    cityName   String
+    province   Province  @relation(fields: [provinceId], references: [id])
+    provinceId String
+    type       String
+    postalCode String
+    Address    Address[]
 }
