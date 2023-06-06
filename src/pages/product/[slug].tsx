@@ -1,5 +1,6 @@
 import { Minus, Plus } from "iconoir-react";
 import { GetServerSidePropsResult, GetServerSidePropsContext } from "next";
+import Image from "next/image";
 import { FullPage } from "~/components/Layout";
 import { prisma } from "~/server/db";
 
@@ -23,7 +24,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 }) => {
   const renderCategories = () => {
     return categories.map((category) => {
-      return <div className="badge badge-ghost">{category}</div>;
+      return <div key={category} className="badge badge-ghost">{category}</div>;
     });
   };
 
@@ -32,8 +33,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
       <FullPage>
         <div>
           <div className="">
-            <img
-              src={image[0]}
+            <Image
+              src={image[0] !== undefined ? image[0] : ''}
               alt={productName}
               className="h-96 w-full rounded-md"
             />

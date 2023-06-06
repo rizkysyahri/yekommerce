@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { Prisma } from "@prisma/client";
+import type { Prisma } from "@prisma/client";
 import { publicProcedure } from "../../trpc";
+
 
 export const getProducts = publicProcedure
   .input(
