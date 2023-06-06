@@ -1,5 +1,5 @@
 import { Minus, Plus } from "iconoir-react";
-import { GetServerSidePropsResult, GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsResult, GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import { FullPage } from "~/components/Layout";
 import { prisma } from "~/server/db";

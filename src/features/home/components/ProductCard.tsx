@@ -1,4 +1,4 @@
-import { ProductVariant } from "@prisma/client";
+import type { ProductVariant } from "@prisma/client";
 import Link from "next/link";
 import * as React from "react";
 import { toRupiah } from "~/utils/format";

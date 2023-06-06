@@ -68,7 +68,7 @@ export const ProductList = () => {
         parseInt(router.query.page ? (router.query.page as string) : "1")
       );
     }
-  }, [router.isReady, router.query.page]);
+  }, [router.isReady, router.query.page, router]);
 
   return (
     <>

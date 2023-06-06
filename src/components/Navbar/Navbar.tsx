@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import Image from "next/image";
 
 const Navbar = () => {
   const supabase = useSupabaseClient();
@@ -60,7 +61,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <Image alt="user" src="" width={30} />
               </div>
             </label>
             <ul
