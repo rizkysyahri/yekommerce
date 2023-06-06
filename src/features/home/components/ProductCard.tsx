@@ -21,19 +21,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   productVariants,
 }) => {
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-2">
-      <div className="w-60">
-        <img src={image} alt={productName} className="rounded-xl" />
-        <p className="mt-5 font-medium">{productName}</p>
-        <p className="mt-1">{toRupiah(price)}</p>
-        <div className="flex items-center justify-center mt-3">
-          <button className="btn-block btn rounded-md">Add To Cart</button>
-        </div>
-        <div className="flex items-center justify-center mt-4">
-          <Link href="" className="underline">
-            Details
-          </Link>
-        </div>
+    <div className="w-60 space-x-4 md:space-y-5">
+      <div className="relative w-full" style={{ paddingBottom: "75%" }}>
+        <img src={image} alt={productName} className="absolute object-cover top-0 left-0 w-full h-full rounded-md md:rounded-xl" />
+      </div>
+      <p className="mt-5 font-medium">{productName}</p>
+      <p className="mt-1">{toRupiah(price)}</p>
+      <div className="mx-auto mt-3 flex items-center justify-center ">
+        <button className="btn-block btn rounded-md">Add To Cart</button>
+      </div>
+      <div className="mt-4 flex items-center justify-center">
+        <Link href={`/product/${slug}`} className="underline">
+          Details
+        </Link>
       </div>
     </div>
   );

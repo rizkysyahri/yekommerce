@@ -6,7 +6,7 @@ export const getProducts = publicProcedure
   .input(
     z.object({
       page: z.number().min(1).default(1),
-      limit: z.number().max(1).default(10),
+      limit: z.number().max(2).default(10),
       name: z.string().nullable().default(""),
       categories: z.array(z.string()).nullable().default([]),
     })
