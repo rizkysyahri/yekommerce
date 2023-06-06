@@ -12,18 +12,26 @@ const Navbar = () => {
   };
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    await supabase.auth.signOut().catch((error) => {
+      console.error(" Error occurred during sign out:", error);
+    });
   };
 
   return (
-    <div className="navbar bg-slate-600 flex items-center justify-between ">
+    <div className="navbar flex items-center justify-between bg-slate-600 ">
       <div className="flex-1">
-        <Link href="/" className="p-2 text-xl normal-case font-semibold" passHref>Yekommerce</Link>
+        <Link
+          href="/"
+          className="p-2 text-xl font-semibold normal-case"
+          passHref
+        >
+          Yekommerce
+        </Link>
       </div>
       {user ? (
         <div className="flex-none">
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
+          <div className="dropdown-end dropdown">
+            <label tabIndex={0} className="btn-ghost btn-circle btn">
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,41 +52,45 @@ const Navbar = () => {
             </label>
             <div
               tabIndex={0}
-              className="card card-compact dropdown-content bg-base-100 mt-3 w-52 shadow"
+              className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
             >
               <div className="card-body">
                 <span className="text-lg font-bold">8 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <button className="btn-primary btn-block btn">
                     View cart
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="dropdown-end dropdown">
+            <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
               <div className="w-10 rounded-full">
                 <img alt="user" src="" width={30} />
               </div>
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-content rounded-box mt-3 w-50 p-2 shadow"
+              className="w-50 dropdown-content menu rounded-box menu-sm mt-3 bg-base-content p-2 shadow"
             >
               <Link href="" className="py-2" passHref>
-                <span className="justify-between badge">
-                  Profile
-                  
-                </span>
+                <span className="badge justify-between">Profile</span>
               </Link>
-              <button className="badge" onClick={logout}>Logout</button>
+              <button className="badge" onClick={logout}>
+                Logout
+              </button>
             </ul>
           </div>{" "}
         </div>
       ) : (
-        <button className="p-2 px-4 py-2 text-white bg-black rounded" onClick={login}>Login</button>
+        <button
+          className="rounded bg-black p-2 px-4 py-2 text-white"
+          onClick={login}
+        >
+          Login
+        </button>
       )}
     </div>
   );
