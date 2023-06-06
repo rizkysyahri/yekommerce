@@ -1,6 +1,5 @@
 import { Minus, Plus } from "iconoir-react";
 import type { GetServerSidePropsResult, GetServerSidePropsContext } from "next";
-import Image from "next/image";
 import { FullPage } from "~/components/Layout";
 import { prisma } from "~/server/db";
 
@@ -33,7 +32,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
       <FullPage>
         <div>
           <div className="">
-            <Image
+            <img
               src={image[0] !== undefined ? image[0] : ''}
               alt={productName}
               className="h-96 w-full rounded-md"

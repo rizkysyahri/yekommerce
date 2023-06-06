@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-import Image from "next/image";
 
 const Navbar = () => {
   const supabase = useSupabaseClient();
@@ -19,7 +18,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-slate-600 flex items-center justify-between ">
       <div className="flex-1">
-        <Link href="/" className="p-2 text-xl normal-case font-semibold">Yekommerce</Link>
+        <Link href="/" className="p-2 text-xl normal-case font-semibold" passHref>Yekommerce</Link>
       </div>
       {user ? (
         <div className="flex-none">
@@ -61,14 +60,14 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <Image alt="user" src="" width={30} />
+                <img alt="user" src="" width={30} />
               </div>
             </label>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-content rounded-box mt-3 w-50 p-2 shadow"
             >
-              <Link href="" className="py-2">
+              <Link href="" className="py-2" passHref>
                 <span className="justify-between badge">
                   Profile
                   

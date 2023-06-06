@@ -31,7 +31,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <button className="btn-block btn rounded-md">Add To Cart</button>
       </div>
       <div className="mt-4 flex items-center justify-center">
-        <Link href={`/product/${slug}`} className="underline">
+        <Link href={`/product/${slug}`} className="underline" passHref>
           Details
         </Link>
       </div>
