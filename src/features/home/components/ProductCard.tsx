@@ -1,4 +1,4 @@
-import type { ProductVariant } from "@prisma/client";
+// import type { ProductVariant } from "@prisma/client";
 import Link from "next/link";
 import * as React from "react";
 import { toRupiah } from "~/utils/format";
@@ -10,7 +10,7 @@ interface ProductCardProps {
   rating?: number;
   image: string;
   slug: string;
-  productVariants: ProductVariant[];
+  // productVariants: ProductVariant[];
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   price,
   productName,
   slug,
-  productVariants,
+  // productVariants,
 }) => {
   return (
     <div className="w-60 space-x-4 md:space-y-5">

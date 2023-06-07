@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Link from "next/link";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
@@ -23,7 +24,7 @@ const Navbar = () => {
         <Link
           href="/"
           className="p-2 text-xl font-semibold normal-case"
-          passHref
+          
         >
           Yekommerce
         </Link>
@@ -68,14 +69,14 @@ const Navbar = () => {
           <div className="dropdown-end dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
               <div className="w-10 rounded-full">
-                <img alt="user" src="" width={30} />
+                <img alt="user" src={user?.user_metadata?.avatar_url as string} width={30} />
               </div>
             </label>
             <ul
               tabIndex={0}
               className="w-50 dropdown-content menu rounded-box menu-sm mt-3 bg-base-content p-2 shadow"
             >
-              <Link href="" className="py-2" passHref>
+              <Link href="/profile" className="py-2" passHref>
                 <span className="badge justify-between">Profile</span>
               </Link>
               <button className="badge" onClick={logout}>

@@ -38,7 +38,7 @@ export const ProductList = () => {
             productName={name}
             price={price}
             rating={rating}
-            productVariants={ProductVariant}
+            // productVariants={ProductVariant}
             key={id}
           />
         );
@@ -65,10 +65,10 @@ export const ProductList = () => {
   React.useEffect(() => {
     if (router.isReady) {
       setPage(
-        parseInt(router.query.page ? (router.query.page as string) : "1")
+        parseInt(router.query.page ? (router.query.page as string) : "1"),
       );
     }
-  }, [router.isReady, router.query.page, router]);
+  }, [router.isReady, router.query.page, useRouter()]);
 
   return (
     <>

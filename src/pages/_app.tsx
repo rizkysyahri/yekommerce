@@ -4,7 +4,7 @@ import "~/styles/globals.css";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider} from "@supabase/auth-helpers-react";
 import type {Session} from "@supabase/auth-helpers-react";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import Navbar from "~/components/Navbar/Navbar";
 
 const MyApp = ({
