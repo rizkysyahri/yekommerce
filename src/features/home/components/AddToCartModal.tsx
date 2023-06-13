@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ProductVariant } from "@prisma/client";
-import { api } from "~/utils/api";
-import { toast } from "react-toastify";
+// import { api } from "~/utils/api";
+// import { toast } from "react-toastify";
 import { ProductVariantRadioCart } from "./ProductVariantRadioCart";
 
 interface AddToCartModalProps {
@@ -17,31 +17,31 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
   productName,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const { refetch: refetchCart } = api.cart.getCart.useQuery();
+  // const { refetch: refetchCart } = api.cart.getCart.useQuery();
 
-  const { mutate, isLoading } = api.cart.addToCart.useMutation({
-    onSuccess: async () => {
-      await refetchCart();
-      toast.success("Berhasil menambahkan ke keranjang", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    },
-    onError: (error) => {
-      toast.error("Gagal menambahkan ke keranjang", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    },
-  });
+  // const { mutate, isLoading } = api.cart.addToCart.useMutation({
+  //   onSuccess: async () => {
+  //     await refetchCart();
+  //     toast.success("Berhasil menambahkan ke keranjang", {
+  //       position: "top-center",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //     });
+  //   },
+  //   onError: (error) => {
+  //     toast.error("Gagal menambahkan ke keranjang", {
+  //       position: "top-center",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //     });
+  //   },
+  // });
 
   const renderVariants = () => {
     return productVariants.map((productVariant) => {

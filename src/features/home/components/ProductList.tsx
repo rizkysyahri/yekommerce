@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ArrowLeftCircle, ArrowRightCircle, Search } from "iconoir-react";
+import { ArrowLeftCircle, ArrowRightCircle } from "iconoir-react";
 import { api } from "~/utils/api";
 import { useDebounce } from "use-debounce";
 import { useRouter } from "next/router";
