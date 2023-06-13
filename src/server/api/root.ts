@@ -1,4 +1,5 @@
 import { productRouter } from "./src/products";
+import { cartRouter } from "./src/cart";
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**
@@ -8,7 +9,7 @@ import { createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   product: productRouter,
-  // cart: CartRouter,
+  cart: cartRouter,
   // address: addressRouter,
 });
 

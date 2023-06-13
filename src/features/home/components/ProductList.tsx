@@ -33,13 +33,13 @@ export const ProductList = () => {
       ({ id, image, name, price, rating, slug, ProductVariant }) => {
         return (
           <ProductCard
+            key={id}
             slug={slug}
             image={image[0] || ""}
             productName={name}
             price={price}
             rating={rating}
-            // productVariants={ProductVariant}
-            key={id}
+            productVariants={ProductVariant}
           />
         );
       }
@@ -65,34 +65,30 @@ export const ProductList = () => {
   React.useEffect(() => {
     if (router.isReady) {
       setPage(
-        parseInt(router.query.page ? (router.query.page as string) : "1"),
+        parseInt(router.query.page ? (router.query.page as string) : "1")
       );
     }
   }, [router.isReady, router.query.page, useRouter()]);
 
   return (
-    <>
-      <div className="flex items-center justify-center p-2 max-w-lg mx-auto">
-        <label className="relative flex items-center text-gray-300 focus-within:text-gray-600 ">
-          <Search className="absolute ml-3 h-5 w-5" />
-          <input
-            type="text"
-            placeholder="Cari Produk ..."
-            onChange={onSeacrhChange}
-            className="flex-grow rounded-md border-none px-10 py-2 pr-3 font-semibold text-black placeholder-gray-500 ring-2 ring-gray-300 focus:ring-2"
-            style={{ width: "32rem" }}
-          />
-        </label>
+    <div className="p-2">
+      <div className="mb-4 flex items-center justify-center">
+        <input
+          type="search"
+          onChange={onSeacrhChange}
+          placeholder="Cari Produk ..."
+          className="h-10 w-full rounded-md p-2 indent-2 ring-2 ring-slate-200 transition duration-300 ease-in-out focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-sky-200 md:w-[512px] md:max-w-[512px]"
+        />
       </div>
 
-      <div className="py-5">
-        <div className="flex items-center justify-center">
-          {(isLoading || isRefetching) && !products ? (
-            <span className="loading loading-ring loading-lg "></span>
-          ) : (
-            <div className="grid grid-cols-2 gap-4">{renderProducts()}</div>
-          )}
-        </div>
+      <div className="flex items-center justify-center">
+        {(isLoading || isRefetching) && !products ? (
+          <span className="loading loading-ring loading-lg "></span>
+        ) : (
+          <div className="grid grid-cols-2 gap-4 sm:gap-y-4">
+            {renderProducts()}
+          </div>
+        )}
       </div>
 
       <div className="mt-8 grid grid-cols-3">
@@ -120,6 +116,6 @@ export const ProductList = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -30,7 +30,7 @@ const Navbar = () => {
         </Link>
       </div>
       {user ? (
-        <div className="flex-none">
+        <div className="flex-none z-10">
           <div className="dropdown-end dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle btn">
               <div className="indicator">

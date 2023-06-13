@@ -7,6 +7,9 @@ export default {
       container: {
         padding: '384px'
       },
+      aspectRatio: {
+        '4/3' : '4 / 3',
+      }
      
     },
   },
