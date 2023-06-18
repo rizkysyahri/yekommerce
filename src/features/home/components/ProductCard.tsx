@@ -28,33 +28,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <>
-      <div className="w-full md:w-60">
-        <div className="aspect-w-3 aspect-h-2 sm:aspect-w-1 sm:aspect-h-1 lg:aspect-w-3 lg:aspect-h-4">
-          <img
-            src={image}
-            alt={productName}
-            className="rounded-md object-cover md:rounded-xl"
-          />
-        </div>
-        <p className="mt-5 font-medium sm:text-left md:text-left">
-          {productName}
-        </p>
-        <p className="mt-1 md:text-left">{toRupiah(price)}</p>
-        <div className="mt-3 flex items-center justify-center">
-          <AddToCartModal
-            isOpen={isOpen}
-            onClose={onClose}
-            productVariants={productVariants}
-            productName={productName}
-          />
-        </div>
-        <div className="mt-4 flex items-center justify-center">
-          <Link href={`/product/${slug}`} className="underline" passHref>
-            Details
-          </Link>
-        </div>
+    <div>
+      <div className="aspect-h-4 aspect-w-5 w-full overflow-hidden">
+        <img
+          src={image}
+          alt={productName}
+          className="rounded-md object-cover md:rounded-xl"
+        />
       </div>
-    </>
+      <p className="mt-3 font-medium sm:text-left md:text-left">{productName}</p>
+      <p className="mt-1 md:text-left">{toRupiah(price)}</p>
+      <div className="mt-3 flex items-center justify-center">
+        <AddToCartModal
+          isOpen={isOpen}
+          onClose={onClose}
+          productVariants={productVariants}
+          productName={productName}
+        />
+      </div>
+      <div className="mt-4 flex items-center justify-center">
+        <Link href={`/product/${slug}`} className="underline" passHref>
+          Details
+        </Link>
+      </div>
+    </div>
   );
 };

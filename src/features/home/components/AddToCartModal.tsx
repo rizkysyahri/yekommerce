@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ProductVariant } from "@prisma/client";
+import type { ProductVariant } from "@prisma/client";
 // import { api } from "~/utils/api";
 // import { toast } from "react-toastify";
 import { ProductVariantRadioCart } from "./ProductVariantRadioCart";

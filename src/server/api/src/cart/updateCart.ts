@@ -16,7 +16,7 @@ export const updateCart = protectedProcedure
     const { cartId, productVariantId, quantity } = input;
 
     return await prisma.$transaction(async (tx) => {
-      const productStock = tx.inventory.count({
+      const productStock = await tx.inventory.count({
         where: {
           status: InventoryStatus.AVAILABLE,
           productVariantId,
@@ -29,6 +29,7 @@ export const updateCart = protectedProcedure
       if (!productStock) {
         throw new TRPCError({
           code: "UNPROCESSABLE_CONTENT",
+          message: "insufficient stock"
         });
       }
 

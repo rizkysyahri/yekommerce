@@ -14,7 +14,7 @@ export const ProductVariantRadioCart: React.FC<
       <div className="relative">
         <input type="radio" name="Variant" className="form-radio peer hidden" />
         <label
-          htmlFor="variant1"
+          htmlFor="variant"
           className="flex cursor-pointer items-center gap-4 rounded-xl bg-white bg-opacity-90 px-5 py-3 shadow-xl backdrop-blur-2xl transition hover:bg-opacity-75 peer-checked:bg-emerald-400 peer-checked:text-white"
         >
           <div className="grid">

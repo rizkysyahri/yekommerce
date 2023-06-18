@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import Link from "next/link";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
@@ -13,24 +13,18 @@ const Navbar = () => {
   };
 
   const logout = async () => {
-    await supabase.auth.signOut().catch((error) => {
-      console.error(" Error occurred during sign out:", error);
-    });
+    await supabase.auth.signOut();
   };
 
   return (
-    <div className="navbar flex items-center justify-between bg-slate-600 ">
+    <div className="navbar flex items-center justify-between bg-slate-600">
       <div className="flex-1">
-        <Link
-          href="/"
-          className="p-2 text-xl font-semibold normal-case"
-          
-        >
+        <Link href="/" className="p-1 text-xl font-semibold normal-case">
           Yekommerce
         </Link>
       </div>
       {user ? (
-        <div className="flex-none z-10">
+        <div className="z-10 flex-none">
           <div className="dropdown-end dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle btn">
               <div className="indicator">
@@ -69,7 +63,11 @@ const Navbar = () => {
           <div className="dropdown-end dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
               <div className="w-10 rounded-full">
-                <img alt="user" src={user?.user_metadata?.avatar_url as string} width={30} />
+                <img
+                  alt="user"
+                  src={user?.user_metadata?.avatar_url as string}
+                  width={30}
+                />
               </div>
             </label>
             <ul
@@ -87,7 +85,7 @@ const Navbar = () => {
         </div>
       ) : (
         <button
-          className="rounded bg-black p-2 px-4 py-2 text-white"
+          className="rounded bg-black px-4 py-2 text-white"
           onClick={login}
         >
           Login

@@ -71,13 +71,13 @@ export const ProductList = () => {
   }, [router.isReady, router.query.page, useRouter()]);
 
   return (
-    <div className="p-2">
-      <div className="mb-4 flex items-center justify-center">
+    <>
+      <div className="flex items-center justify-center">
         <input
           type="search"
           onChange={onSeacrhChange}
           placeholder="Cari Produk ..."
-          className="h-10 w-full rounded-md p-2 indent-2 ring-2 ring-slate-200 transition duration-300 ease-in-out focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-sky-200 md:w-[512px] md:max-w-[512px]"
+          className="w-full max-w-xl mb-4 rounded-md p-2 indent-2 ring-1 ring-slate-200 transition duration-300 ease-in-out focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-sky-200"
         />
       </div>
 
@@ -85,7 +85,7 @@ export const ProductList = () => {
         {(isLoading || isRefetching) && !products ? (
           <span className="loading loading-ring loading-lg "></span>
         ) : (
-          <div className="grid grid-cols-2 gap-4 sm:gap-y-4">
+          <div className="grid grid-cols-2 gap-4 max-w-xl w-full">
             {renderProducts()}
           </div>
         )}
@@ -116,6 +116,6 @@ export const ProductList = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
