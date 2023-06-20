@@ -46,7 +46,7 @@ export const ProductList = () => {
     );
   };
 
-  const onSeacrhChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSeacrhChange : React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchProducts(e?.currentTarget.value);
   };
 
@@ -58,6 +58,7 @@ export const ProductList = () => {
         },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [page]);
 
   // tunggu hingga router siap, lalu setel status `halaman` ke halaman
@@ -68,7 +69,7 @@ export const ProductList = () => {
         parseInt(router.query.page ? (router.query.page as string) : "1")
       );
     }
-  }, [router.isReady, router.query.page, useRouter()]);
+  }, [router.isReady, router.query.page]);
 
   return (
     <>
