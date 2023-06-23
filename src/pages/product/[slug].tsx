@@ -48,7 +48,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
           <div className="mt-2 flex-wrap gap-3 ">{renderCategories()}</div>
 
-          <div className="mt-3 flex w-full gap-3">
+          {/* <div className="mt-3 flex w-full gap-3">
             <div className="relative">
               <input
                 type="radio"
@@ -79,7 +79,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
                 300 gram
               </label>
             </div>
-          </div>
+          </div> */}
 
           <div className="mt-3">
             <p>{description}</p>
