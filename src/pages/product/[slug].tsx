@@ -23,7 +23,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 }) => {
   const renderCategories = () => {
     return categories.map((category) => {
-      return <div key={category} className="badge badge-ghost">{category}</div>;
+      return <div key={category} className="badge badge-ghost rounded font-bold bg-emerald-600">{category}</div>;
     });
   };
 
@@ -88,12 +88,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
           <div className="mt-5 grid grid-cols-2">
             <div className="flex items-center justify-start">
               <button className="btn rounded-md px-2">
-                <Minus className="h-10 w-10" />
+                <Minus width={40} height={40} />
               </button>
             </div>
             <div className="flex items-center justify-end">
               <button className="btn rounded-md px-2 ">
-                <Plus className="h-10 w-10" />
+                <Plus width={40} height={40} />
               </button>
             </div>
           </div>
