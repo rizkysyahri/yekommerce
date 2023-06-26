@@ -47,7 +47,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         />
       </div>
       <div className="mt-4 flex items-center justify-center">
-        <Link href={`/product/${slug}`} className="underline" passHref>
+        <Link href={`/product/${slug}`} className="underline">
           Details
         </Link>
       </div>
