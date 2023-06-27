@@ -1,4 +1,4 @@
-import { Minus, Plus } from "iconoir-react";
+import { IoRemoveOutline, IoAddOutline } from "react-icons/io5";
 import type { GetServerSidePropsResult, GetServerSidePropsContext } from "next";
 import { FullPage } from "~/components/Layout";
 import { prisma } from "~/server/db";
@@ -87,13 +87,13 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
           <div className="mt-5 grid grid-cols-2">
             <div className="flex items-center justify-start">
-              <button className="btn rounded-md px-2">
-                <Minus width={40} height={40} />
+              <button className="btn rounded-md px-4">
+                <IoRemoveOutline className="w-8 h-8"  />
               </button>
             </div>
             <div className="flex items-center justify-end">
-              <button className="btn rounded-md px-2 ">
-                <Plus width={40} height={40} />
+              <button className="btn rounded-md px-4 ">
+                <IoAddOutline className="w-8 h-8" />
               </button>
             </div>
           </div>

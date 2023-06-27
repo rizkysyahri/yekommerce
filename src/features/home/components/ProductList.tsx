@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ArrowLeftCircle, ArrowRightCircle } from "iconoir-react";
+import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { api } from "~/utils/api";
 import { useDebounce } from "use-debounce";
 import { useRouter } from "next/router";
@@ -95,8 +95,8 @@ export const ProductList = () => {
       <div className="mt-8 grid grid-cols-3">
         <div className="flex items-center justify-start">
           {products?.meta.page !== 1 && (
-            <ArrowLeftCircle
-              className="h-8 w-8"
+            <IoChevronBackOutline
+              className="h-11 w-11 bg-zinc-200 px-3 py-2 rounded-md"
               aria-label="Provious Page"
               onClick={() => setPage((prevPage) => prevPage - 1)}
             />
@@ -109,8 +109,8 @@ export const ProductList = () => {
 
         <div className="flex items-center justify-end">
           {products?.meta.hasNext && (
-            <ArrowRightCircle
-              className="h-8 w-8"
+            <IoChevronForwardOutline
+              className="h-11 w-11 bg-zinc-200 px-3 py-2 rounded-md"
               aria-label="Provious Page"
               onClick={() => setPage((prevPage) => prevPage + 1)}
             />
