@@ -60,7 +60,7 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
       <button className="btn rounded-md w-full" onClick={() => setIsOpen(true)}>
         Add To Cart
       </button>
-      <dialog className="modal" open={isOpen} onClose={onClose}>
+      <dialog className="modal backdrop-blur-sm" open={isOpen} onClose={onClose}>
         <form method="dialog" className="modal-box">
           <button
             className="btn-ghost btn-sm btn-circle btn absolute right-2 top-2"
@@ -72,8 +72,8 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
             ✕
           </button>
           <h3 className="text-lg font-bold">Pilih Variant {productName}</h3>
-          <div className="mt-3">
-            <div className="grid grid-rows-2">{renderVariants()}</div>
+          <div className="mt-3 w-full">
+            <div className="grid grid-rows-2 gap-2">{renderVariants()}</div>
           </div>
           <div className="modal-action">
             <button
@@ -85,7 +85,7 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
             >
               Close
             </button>
-            <button className="btn rounded-md ">Tambahkan ke keranjang</button>
+            <button className="btn rounded-md">Tambahkan ke keranjang</button>
           </div>
         </form>
       </dialog>
