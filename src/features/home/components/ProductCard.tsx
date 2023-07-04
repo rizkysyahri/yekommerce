@@ -43,8 +43,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           isOpen={isOpen}
           onClose={onClose}
           productVariants={productVariants}
-          productName={productName}
-        />
+          productName={productName} 
+          checked={false}      />
       </div>
       <div className="mt-4 flex items-center justify-center">
         <Link href={`/product/${slug}`} className="underline">
