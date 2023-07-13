@@ -39,7 +39,6 @@ const Cart = () => {
           productVariantName={cartItem.item.label}
           productVariantId={cartItem.item.id}
           quantity={cartItem.quantity}
-          selected
           slug={cartItem.item.product.slug}
           stock={cartItem.item.Inventory[0]?.quantity as number}
           key={cartItem.id}
@@ -49,7 +48,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="mx-auto max-w-xl px-3 py-6">
+    <div className="mx-auto max-w-2xl px-3 py-6">
       <div className="grid">
         <div className="mb-10">
           <span className="text-xl font-semibold">Keranjang Belanja</span>

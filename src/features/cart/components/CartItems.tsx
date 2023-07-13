@@ -5,6 +5,12 @@ import { api } from "~/utils/api";
 import { toast } from "react-toastify";
 import { serializeAddToCartError } from "../utils/serializeAddToCartError";
 import { toRupiah } from "~/utils/format";
+import Link from "next/link";
+import {
+  IoAddCircleOutline,
+  IoRemoveCircleOutline,
+  IoTrashOutline,
+} from "react-icons/io5";
 
 interface CartItemProps {
   productName: string;
@@ -13,7 +19,6 @@ interface CartItemProps {
   productVariantName: string;
   productVariantId: string;
   quantity: number;
-  selected: boolean;
   slug: string;
   id: string;
   stock: number;
@@ -26,18 +31,22 @@ export const CartItem: React.FC<CartItemProps> = ({
   productVariantName,
   productVariantId,
   quantity,
-  selected = false,
   slug,
   id,
   stock,
 }) => {
   const firstRenderRef = React.useRef<boolean>(true);
 
+  const [isChecked, setIsChecked] = React.useState(false);
   const [currentQuantity, setCurrentQuantity] =
     React.useState<number>(quantity);
   const [quantityInputError, setQuantityInputError] =
     React.useState<string>("");
   const [debounceQuantity] = useDebounce(currentQuantity, 1000);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const quaryClient = useQueryClient();
   const apiUtils = api.useContext();
@@ -110,29 +119,72 @@ export const CartItem: React.FC<CartItemProps> = ({
   }, [cartItem?.quantity]);
 
   return (
-    <div className="flex w-full items-center justify-between">
-      <div>
-        <input
-          type="checkbox"
-          checked={selected}
-          className="checkbox rounded-none"
+    <div className="mb-10 flex items-center gap-5">
+      <input
+        type="checkbox"
+        onChange={handleCheckboxChange}
+        className="checkbox h-5 w-5 self-center rounded-md"
+      />
+      <div className="flex items-center gap-5">
+        <img
+          src={productImage}
+          alt={productVariantName}
+          className="h-auto w-36 rounded-md object-fill"
         />
-        <div className="aspect-h-2 aspect-w-3 w-full flex-shrink-0">
-          <img
-            src={productImage}
-            alt={productVariantName}
-            className="h-auto w-36 rounded-md object-fill md:rounded-md lg:w-28"
-          />
-          <div>
-            <span>{productName}</span>
-            <span>{productVariantName}</span>
-            <span>{toRupiah(price)}</span>
+        <div className="flex flex-col">
+          <div className="grid">
+            <span className="font-semibold">{productName}</span>
+            <span className="mb-5 text-zinc-500">{productVariantName}</span>
+          </div>
+          <div className="flex items-center justify-end">
+            <span className="font-semibold">{toRupiah(price)}</span>
+            <Link
+              href={`/product/${slug}`}
+              className=" ml-16 text-sm text-zinc-500 underline"
+            >
+              detail produk
+            </Link>
+            <span className="mx-3 font-semibold">|</span>
+            <IoTrashOutline
+              className="cursor-pointer text-zinc-500"
+              onClick={() => deleteCart({ cartId: id })}
+            />
+
+            <div className="ml-5 flex items-center justify-around">
+              <button
+                onClick={() => onUpdateCartQuantity("INCREMENT")}
+                aria-label="subtract quantity"
+              >
+                <IoRemoveCircleOutline />
+              </button>
+              <input
+                className="w-10 rounded-none border-0 text-center"
+                min={1}
+                type="number"
+                value={currentQuantity}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+
+                  if (value <= stock) {
+                    setCurrentQuantity(value);
+                    return;
+                  }
+
+                  if (value <= 0 || isNaN(value)) {
+                    setCurrentQuantity(0);
+                    setQuantityInputError("Jumlah harus diisi");
+                  }
+                }}
+              />
+              <button
+                aria-label="add quantity"
+                onClick={() => onUpdateCartQuantity("DECREMENT")}
+              >
+                <IoAddCircleOutline />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="grid items-center justify-end">
-        
       </div>
     </div>
   );

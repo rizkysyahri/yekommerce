@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { ProductVariant } from "@prisma/client";
 import { api } from "~/utils/api";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { ProductVariantRadioCart } from "./ProductVariantRadioCart";
 import { serializeAddToCartError } from "~/features/cart/utils/serializeAddToCartError";
 
@@ -35,7 +35,6 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
-        progress: undefined,
         draggable: true,
         theme: "light",
       });
@@ -60,7 +59,7 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
           key={productVariant.id}
           price={productVariant.price}
           variantLabel={productVariant.label}
-          selected={selectedVariant === productVariant}
+          selected={selectedVariant?.id === productVariant.id}
           onChange={() => setSelectedVariant(productVariant)}
         />
       );
@@ -122,20 +121,6 @@ export const AddToCartModal: React.FC<AddToCartModalProps> = ({
             >
               Tambahkan ke keranjang
             </button>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
-            {/* Same as */}
-            <ToastContainer />
           </div>
         </form>
       </dialog>
