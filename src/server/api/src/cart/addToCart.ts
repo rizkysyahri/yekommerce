@@ -38,8 +38,8 @@ export const addToCart = protectedProcedure
         where: {
           productVariantId,
           deletedAt: null,
-          userId: session.user.id,
           checkoutAt: null,
+          userId: session.user.id,
         },
       });
 

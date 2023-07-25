@@ -23,7 +23,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 }) => {
   const renderCategories = () => {
     return categories.map((category) => {
-      return <div key={category} className="badge badge-ghost rounded font-bold bg-emerald-600">{category}</div>;
+      return <div key={category} className="badge rounded text-green-800 font-bold bg-green-200 py-3">{category}</div>;
     });
   };
 
@@ -42,11 +42,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
         <div className="mt-2 grid p-3">
           <span className="text-xl">{productName}</span>
-          <span className="text-3xl font-medium">
+          <span className="text-xl font-semibold">
             Rp {price.toLocaleString("id-ID")}
           </span>
 
-          <div className="mt-2 flex-wrap gap-3 ">{renderCategories()}</div>
+          <div className="my-2 flex-wrap gap-3">{renderCategories()}</div>
 
           {/* <div className="mt-3 flex w-full gap-3">
             <div className="relative">

@@ -1,7 +1,11 @@
 import { CartItem } from "~/features/cart";
 import { api } from "~/utils/api";
+import { useClientProtected } from "~/hooks/useClientProtected";
 
 const Cart = () => {
+
+  useClientProtected()
+
   const { data: cart } = api.cart.getCart.useQuery();
 
   const renderCart = () => {

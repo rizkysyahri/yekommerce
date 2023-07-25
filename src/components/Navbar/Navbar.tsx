@@ -16,6 +16,8 @@ const Navbar = () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
     });
+
+    console.log(login)
   };
 
   const logout = async () => {

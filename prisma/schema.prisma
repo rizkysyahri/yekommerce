@@ -76,7 +76,7 @@ model CategoriesOnProducts {
 model Cart {
     id               String         @id @default(cuid())
     item             ProductVariant @relation(fields: [productVariantId], references: [id])
-    user             User           @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    user             User           @relation(fields: [userId], references: [id])
     userId           String
     quantity         Int
     deletedAt        DateTime?

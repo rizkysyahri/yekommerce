@@ -52,7 +52,6 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const supabase = createPagesServerClient(opts, {
     supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    
   });
 
   const { session } = (await supabase.auth.getSession()).data;
@@ -61,6 +60,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
     session,
   });
 };
+
   
 /**
  * 2. INITIALIZATION
@@ -110,6 +110,7 @@ export const publicProcedure = t.procedure;
 /**
 Middleware yang dapat digunakan kembali yang memaksa pengguna masuk sebelum menjalankan
  * prosedur */
+
 
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session?.user) {
