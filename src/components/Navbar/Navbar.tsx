@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 import CartButton from "./CartButton";
 
 const Navbar = () => {
+  // const [isUser, setUser]  = React.useState({})
   const supabase = useSupabaseClient();
   const user = useUser();
 
@@ -16,13 +17,23 @@ const Navbar = () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
     });
-
-    console.log(login)
   };
 
   const logout = async () => {
     await supabase.auth.signOut();
   };
+
+  // React.useEffect(() => {
+  //   async function getUserData() {
+  //     await supabase.auth.getUser().then((value) => {
+  //       if (value.data.user) {
+  //         console.log(value.data.user)
+  //         setUser(value.data.user)
+  //       }
+  //     })
+  //   }
+  //   getUserData()
+  // }, [])
 
   return (
     <div className="navbar flex items-center justify-between bg-slate-600">

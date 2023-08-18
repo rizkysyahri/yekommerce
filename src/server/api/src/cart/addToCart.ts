@@ -34,7 +34,7 @@ export const addToCart = protectedProcedure
       }
 
       // 2. Check if product is in cart
-      const cartByProductId = await tx.cart.findFirst({
+      const cartByProductId : Cart | null = await tx.cart.findFirst({   
         where: {
           productVariantId,
           deletedAt: null,

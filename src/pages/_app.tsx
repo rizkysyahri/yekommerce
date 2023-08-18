@@ -6,6 +6,7 @@ import { SessionContextProvider, type Session } from "@supabase/auth-helpers-rea
 import type { AppProps } from "next/app";
 import Navbar from "~/components/Navbar/Navbar";
 import { Roboto } from "@next/font/google";
+import { ToastContainer } from "react-toastify";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ const MyApp = ({
       <main className={roboto.className}>
         <Navbar />
         <Component {...pageProps} />
+        <ToastContainer />
       </main>
     </SessionContextProvider>
   );
